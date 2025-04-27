@@ -13,7 +13,7 @@ public class ZipCodeTest {
     public void checkZipCode4Digits(){
         System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
         WebDriver browser = new ChromeDriver();
-        browser.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+        browser.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         browser.get("https://www.sharelane.com/cgi-bin/register.py");
         browser.findElement(By.name("zip_code")).sendKeys("1234");
         browser.findElement(By.cssSelector("[value=Continue]")).click();
@@ -34,5 +34,4 @@ public class ZipCodeTest {
         Assert.assertEquals(actualErrorMessage, "Oops, error on page. ZIP code should have 5 digits");
         browser.quit();
     }
-
 }
